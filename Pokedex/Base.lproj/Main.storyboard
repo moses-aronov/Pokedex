@@ -116,6 +116,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="92p-xp-r4e" id="y16-ft-Snq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
