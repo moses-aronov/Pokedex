@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     //MARK: Variables
     var pokemon = [Pokemon]()
-    
+    var musicPlayer: AVAudioPlayer!
     
     //MARK: IBOutlets
     @IBOutlet weak var collection: UICollectionView!
@@ -21,7 +22,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
-        
+        initAudio()
         parsePokemonCSV()
     }
     
@@ -43,6 +44,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } catch let err as NSError{
             print(err.debugDescription)
         }
+    }
+    
+    func initAudio(){
+        let path = NSBundle.mainBundle().pathForResource("music", ofType: "mp3")!
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path)!)
+            musicPlayer.prepareToPlay()
+            musicPlayer.numberOfLoops = -1
+            musicPlayer.play()
+        
+        } catch let error as NSError{
+            print(error.debugDescription)
+        }
+        
     }
     
     //MARK: CollectionView Functions
@@ -72,7 +87,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSizeMake(105, 105)
     }
     
-    @IBAction func musicButtonTouchUpInside(sender: AnyObject) {
+    @IBAction func musicButtonTouchUpInside(sender: UIButton!) {
+        
+        if musicPlayer.playing{
+            musicPlayer.stop()
+            sender.alpha = 0.2
+        } else{
+            musicPlayer.play()
+            sender.alpha = 1.0
+        }
     }
     
 
