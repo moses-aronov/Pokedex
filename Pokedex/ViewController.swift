@@ -30,17 +30,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.returnKeyType = UIReturnKeyType.Done
         initAudio()
         parsePokemonCSV()
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard(_:)))
-        tapGestureRecognizer.delegate = self
-        self.collection?.addGestureRecognizer(tapGestureRecognizer)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard(_:)))
+//        tapGestureRecognizer.delegate = self
+//        self.collection?.addGestureRecognizer(tapGestureRecognizer)
     }
     
     //MarK: Overrides
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        searchBar.resignFirstResponder()
-        self.view.endEditing(true)
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PokemonDetailViewController"{
+            if let pokemonDetailViewController = segue.destinationViewController as? PokemonDetailViewController{
+                if let poke = sender as? Pokemon{
+                    pokemonDetailViewController.pokemon = poke
+                }
+            }
+        }
     }
+   
     
     
     //MARK: Functions
@@ -76,15 +83,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
-    func gestureRecognizer(_: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    func dismissKeyboard(gesture: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
-    
+//    func gestureRecognizer(_: UIGestureRecognizer,
+//                           shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//    
+//    func dismissKeyboard(gesture: UITapGestureRecognizer) {
+//        self.view.endEditing(true)
+//    }
+//    
 
     
     //MARK: CollectionView Functions
@@ -106,6 +113,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let poke: Pokemon!
+        
+        if inSearchMode{
+           poke = filteredPokemon[indexPath.row]
+        } else{
+            poke = pokemon[indexPath.row]
+        }
+        print(poke.name)
+        performSegueWithIdentifier("PokemonDetailViewController", sender: poke)
+        
         
     }
     
@@ -157,8 +174,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
-    
+
 
 }
 

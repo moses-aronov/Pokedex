@@ -20,6 +20,7 @@
 		0A767E281CB3EF8700B908A4 /* PokemonHollow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A767E261CB3EF8700B908A4 /* PokemonHollow.ttf */; };
 		0A767E291CB3EF8700B908A4 /* PokemonSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A767E271CB3EF8700B908A4 /* PokemonSolid.ttf */; };
 		0A767E2B1CB3F30700B908A4 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A767E2A1CB3F30700B908A4 /* music.mp3 */; };
+		0A767E2D1CB401E700B908A4 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A767E2C1CB401E700B908A4 /* PokemonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0A767E261CB3EF8700B908A4 /* PokemonHollow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonHollow.ttf; sourceTree = "<group>"; };
 		0A767E271CB3EF8700B908A4 /* PokemonSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonSolid.ttf; sourceTree = "<group>"; };
 		0A767E2A1CB3F30700B908A4 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		0A767E2C1CB401E700B908A4 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				0A56D8151CB2D5E9005DF59E /* ViewController.swift */,
+				0A767E2C1CB401E700B908A4 /* PokemonDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				0A183CD81CB2E3B3005A8135 /* csv.swift in Sources */,
 				0A56D8161CB2D5E9005DF59E /* ViewController.swift in Sources */,
+				0A767E2D1CB401E700B908A4 /* PokemonDetailViewController.swift in Sources */,
 				0A183CD31CB2D84C005A8135 /* Pokemon.swift in Sources */,
 				0A56D81C1CB2D5E9005DF59E /* Pokedex.xcdatamodeld in Sources */,
 				0A183CD61CB2DC6C005A8135 /* PokemonCollectionViewCell.swift in Sources */,
