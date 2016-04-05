@@ -72,6 +72,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSizeMake(105, 105)
     }
     
+    @IBAction func musicButtonTouchUpInside(sender: AnyObject) {
+    }
     
 
 }
