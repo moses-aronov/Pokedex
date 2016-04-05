@@ -9,13 +9,12 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UIGestureRecognizerDelegate {
     //MARK: Variables
     var pokemon = [Pokemon]()
     var filteredPokemon = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
     var inSearchMode = false
-    
     
     //MARK: IBOutlets
     @IBOutlet weak var collection: UICollectionView!
@@ -24,12 +23,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK: ViewController Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collection.delegate = self
         collection.dataSource = self
         searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
         initAudio()
         parsePokemonCSV()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard(_:)))
+        tapGestureRecognizer.delegate = self
+        self.collection?.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    //MarK: Overrides
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        searchBar.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+    
     
     //MARK: Functions
     func parsePokemonCSV(){
@@ -64,6 +76,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
+    func gestureRecognizer(_: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func dismissKeyboard(gesture: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+
     
     //MARK: CollectionView Functions
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -108,12 +130,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == ""{
             inSearchMode = false
+            view.endEditing(true)
+            collection.reloadData()
         } else {
             inSearchMode = true
             let lower = searchBar.text!.lowercaseString
             filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
             collection.reloadData()
         }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
     }
     
     
