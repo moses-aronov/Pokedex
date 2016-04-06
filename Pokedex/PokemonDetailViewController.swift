@@ -14,6 +14,7 @@ class PokemonDetailViewController: UIViewController {
    
     @IBOutlet weak var titleLabel: UINavigationItem!
     @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var typeLabelValue: UILabel!
     @IBOutlet weak var defenseLabelValue: UILabel!
     @IBOutlet weak var heightLabelValue: UILabel!
@@ -27,11 +28,14 @@ class PokemonDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.title = pokemon.name
-        mainImage.image = UIImage(named: "\(pokemon.pokedexId)")
+        
+        let currentPokemonImage = UIImage(named: "\(pokemon.pokedexId)")
+        mainImage.image = currentPokemonImage
+        currentEvolutionImage.image = currentPokemonImage
         
         pokemon.downloadPokemonDetails { () -> () in
-            
+            print("Did we get here")
+            self.updateUI()
         }
     }
 
@@ -40,16 +44,32 @@ class PokemonDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateUI(){
+        titleLabel.title = pokemon.name
+        
+        typeLabelValue.text = pokemon.type
+        defenseLabelValue.text = pokemon.defense
+        heightLabelValue.text = pokemon.height
+        pokedexIDLabelValue.text = "\(pokemon.pokedexId)"
+        baseAttackLabelValue.text = pokemon.attack
+        weightLabelValue.text = pokemon.weight
+        descriptionLabel.text = pokemon.description
+        if pokemon.nextEvolutionID == ""{
+            nextEvolutionLabel.text = "No Evolutions"
+            nextEvolutionImage.hidden = true
+        
+        } else{
+            nextEvolutionImage.hidden = false
+            nextEvolutionImage.image = UIImage(named: pokemon.nextEvolutionID)
+            var str = "Next Evolution: \(pokemon.nextEvolution)"
+            
+            if pokemon.nextEvolutionLevel != ""{
+                str += " - LVL \(pokemon.nextEvolutionLevel)"
+            }
+            nextEvolutionLabel.text = str
+        }
+        
     }
-    */
 
     @IBAction func backButtonToupUpInside(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)

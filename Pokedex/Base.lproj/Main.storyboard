@@ -421,6 +421,7 @@
                         <outlet property="baseAttackLabelValue" destination="tA4-tH-vfU" id="JNW-NL-poh"/>
                         <outlet property="currentEvolutionImage" destination="Nma-e0-3tW" id="axH-OY-lM4"/>
                         <outlet property="defenseLabelValue" destination="Iuy-j2-uci" id="DcC-6g-PGK"/>
+                        <outlet property="descriptionLabel" destination="ejM-Rk-fRV" id="ggw-TF-7I1"/>
                         <outlet property="heightLabelValue" destination="eec-w6-Pm9" id="yOb-JR-PwF"/>
                         <outlet property="mainImage" destination="vj4-2A-TJS" id="Mch-51-OUt"/>
                         <outlet property="nextEvolutionImage" destination="pJW-UA-mAk" id="Nrw-4A-cMf"/>
