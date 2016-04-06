@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A019AA31CB581A00090CF09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A019AA21CB581A00090CF09 /* Constants.swift */; };
 		0A183CD01CB2D822005A8135 /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0A183CCF1CB2D822005A8135 /* pokemon.csv */; };
 		0A183CD31CB2D84C005A8135 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A183CD21CB2D84C005A8135 /* Pokemon.swift */; };
 		0A183CD61CB2DC6C005A8135 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A183CD51CB2DC6C005A8135 /* PokemonCollectionViewCell.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A019AA21CB581A00090CF09 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A183CCF1CB2D822005A8135 /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pokemon.csv; sourceTree = "<group>"; };
 		0A183CD21CB2D84C005A8135 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		0A183CD51CB2DC6C005A8135 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				0A183CD71CB2E3B3005A8135 /* csv.swift */,
+				0A019AA21CB581A00090CF09 /* Constants.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				0A56D81C1CB2D5E9005DF59E /* Pokedex.xcdatamodeld in Sources */,
 				0A183CD61CB2DC6C005A8135 /* PokemonCollectionViewCell.swift in Sources */,
 				0A56D8141CB2D5E9005DF59E /* AppDelegate.swift in Sources */,
+				0A019AA31CB581A00090CF09 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MosesAronov.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -423,6 +428,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MosesAronov.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
