@@ -29,9 +29,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.delegate = self
         initAudio()
         parsePokemonCSV()
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard(_:)))
-//        tapGestureRecognizer.delegate = self
-//        self.collection?.addGestureRecognizer(tapGestureRecognizer)
     }
     
     //MarK: Overrides
@@ -134,6 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == ""{
             inSearchMode = false
+            collection.reloadData()
         } else {
             inSearchMode = true
             let lower = searchBar.text!.lowercaseString

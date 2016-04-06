@@ -11,12 +11,26 @@ import UIKit
 class PokemonDetailViewController: UIViewController {
 
     var pokemon: Pokemon!
+   
+    @IBOutlet weak var titleLabel: UINavigationItem!
     
-    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var typeLabelValue: UILabel!
+    @IBOutlet weak var defenseLabelValue: UILabel!
+    
+    @IBOutlet weak var heightLabelValue: UILabel!
+    
+    @IBOutlet weak var pokedexIDLabelValue: UILabel!
+    
+    @IBOutlet weak var baseAttackLabelValue: UILabel!
+    @IBOutlet weak var weightLabelValue: UILabel!
+    @IBOutlet weak var currentEvolutionImage: UIImageView!
+    @IBOutlet weak var nextEvolutionImage: UIImageView!
+    @IBOutlet weak var nextEvolutionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = pokemon.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,4 +49,7 @@ class PokemonDetailViewController: UIViewController {
     }
     */
 
+    @IBAction func backButtonToupUpInside(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
